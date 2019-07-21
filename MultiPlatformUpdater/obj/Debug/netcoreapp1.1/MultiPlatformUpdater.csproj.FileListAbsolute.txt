@@ -1,0 +1,7 @@
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\bin\Debug\netcoreapp1.1\MultiPlatformUpdater.deps.json
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\bin\Debug\netcoreapp1.1\MultiPlatformUpdater.dll
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\bin\Debug\netcoreapp1.1\MultiPlatformUpdater.pdb
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\obj\Debug\netcoreapp1.1\MultiPlatformUpdater.csproj.CoreCompileInputs.cache
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\obj\Debug\netcoreapp1.1\MultiPlatformUpdater.AssemblyInfo.cs
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\obj\Debug\netcoreapp1.1\MultiPlatformUpdater.dll
+D:\ProjectSample\.Net Core\MultiPlatformUpdater\MultiPlatformUpdater\MultiPlatformUpdater\obj\Debug\netcoreapp1.1\MultiPlatformUpdater.pdb
