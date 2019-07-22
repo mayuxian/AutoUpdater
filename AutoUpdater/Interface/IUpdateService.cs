@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 public interface IUpdateService
 {
     Task<IVersionInfo> GetVersionInfo();
