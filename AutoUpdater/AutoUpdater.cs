@@ -4,5 +4,6 @@ namespace AutoUpdater
 {
     public class AutoUpdater
     {
+      
     }
 }
