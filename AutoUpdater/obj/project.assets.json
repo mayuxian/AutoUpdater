@@ -7284,11 +7284,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GitHub\\AutoUpdater\\AutoUpdater\\AutoUpdater.csproj",
+      "projectUniqueName": "D:\\GitHub-Self\\AutoUpdater\\AutoUpdater\\AutoUpdater.csproj",
       "projectName": "AutoUpdater",
-      "projectPath": "D:\\GitHub\\AutoUpdater\\AutoUpdater\\AutoUpdater.csproj",
+      "projectPath": "D:\\GitHub-Self\\AutoUpdater\\AutoUpdater\\AutoUpdater.csproj",
       "packagesPath": "C:\\Users\\mayuxian\\.nuget\\packages\\",
-      "outputPath": "D:\\GitHub\\AutoUpdater\\AutoUpdater\\obj\\",
+      "outputPath": "D:\\GitHub-Self\\AutoUpdater\\AutoUpdater\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"

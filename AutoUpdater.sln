@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateTest", "UpdateTest\Up
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdater", "AutoUpdater\AutoUpdater.csproj", "{98261C72-B085-4F61-8962-ADC04F816964}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F227DB68-3973-46AB-97C0-D0F1B97063BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{02368ADB-4840-47FA-B47D-D8B4BD4DBEDA} = {F227DB68-3973-46AB-97C0-D0F1B97063BF}
+		{25A4A535-B270-4210-A1F3-A1EC8F1ED516} = {F227DB68-3973-46AB-97C0-D0F1B97063BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50AF7F68-BAB3-4159-8D52-8538AA61A0FF}
