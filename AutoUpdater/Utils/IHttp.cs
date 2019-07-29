@@ -9,26 +9,21 @@ namespace AutoUpdater.Utils
 {
     public interface IHttp : IHttpBase<object, object>
     {
-        Task<HttpWebResponse> HttpGetResponseAsync();
+        Task<HttpWebResponse> HttpGetResponseAsync(string url, HttpSetting setting = null);
 
-        Task<HttpWebResponse> HttpPostResponseAsync();
+        Task<HttpWebResponse> HttpPostResponseAsync(string url, HttpSetting setting = null);
     }
 
     public interface IHttpBase<GetResponseT, PostResponseT>
     {
-        Task<GetResponseT> HttpGetAsync();
+        Task<GetResponseT> HttpGetAsync(string url, HttpSetting setting = null);
 
-        Task<string> HttpGetStringAsync();
+        Task<string> HttpGetStringAsync(string url, HttpSetting setting = null);
 
-        Task<Stream> HttpGetStreamAsync();
+        Task<Stream> HttpGetStreamAsync(string url, HttpSetting setting = null);
 
-        Task<byte[]> HttpGetBytesAsync();
+        Task<byte[]> HttpGetBytesAsync(string url, HttpSetting setting = null);
 
-        Task<PostResponseT> HttpPostAsync();
-    }
-
-    interface HttpConfig
-    {
-
+        Task<PostResponseT> HttpPostAsync(string url, HttpSetting setting = null);
     }
 }
