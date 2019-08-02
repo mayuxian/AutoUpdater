@@ -1,14 +1,34 @@
 syntax = "proto3";
 
-package Updater.gRPCService.Protocol;
+//required和optional以及默认值[default=""]，提示在proto3不可用
+//import "google/protobuf/empty.proto";
+import "VersionFiles.proto";
+
+package Updater.gRPCService.Protocol;  
 
 service IUpdateService{
-  rpc GetVersionInfo() returns (VersionInfo){}
-  rpc DownloadFile(string url,string downloadPath) returns(bool){}
+  rpc GetVersionInfo(GetVersionInfoRquest) returns (VersionInfo) {}
+  rpc DownloadFile(DownloadRequest) returns (DownloadResult) {}
 }
+message GetVersionInfoRquest{
+  string Url = 1;
+}
+
 message VersionInfo {
-  string Id;
-  string Name;
-  string Description;
-  string TimeStamp;
+  string Id = 1;  //唯一标识  
+  string Name = 2 ;
+  string Description = 3;
+  string TimeStamp = 4;
+
+  //VersionFiles Files;
+}
+
+
+message DownloadRequest{
+  string Url = 1;
+  string downloadPath = 2;
+}
+
+message DownloadResult{
+  bool Success = 1;
 }

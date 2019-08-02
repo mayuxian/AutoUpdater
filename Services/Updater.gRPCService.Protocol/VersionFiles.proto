@@ -1,0 +1,8 @@
+﻿syntax = "proto3";
+
+package Updater.gRPCService.Protocol;  
+
+message VersionFile{
+  string id = 1;
+  string RelativePath = 2;
+}

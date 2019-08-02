@@ -2,12 +2,15 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 using Updater.CommService.Interface;
+using Updater.GRPCService.Protocol;
 
 namespace Updater.gRPCService.Impl
 {
     public class UpdateService //: ICommService
     {
+        private static Server _server;
         private GrpcUpdateService grpcUpdateService;
+        private CommOptions _commOptions;
 
         public UpdateService()
         {
@@ -26,7 +29,6 @@ namespace Updater.gRPCService.Impl
 
         public async Task<string> GetStringAsync(string url, CommOptions setting = null)
         {
-            var result = await grpcUpdateService.GetStringAsync(null, null);
             //result.Test1
             return null;
         }
