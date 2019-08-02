@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace AutoUpdater.Utils
+namespace Updater.CommService.Interface
 {
-    public class HttpSetting
+    public class CommOptions
     {
         /// <summary>
         ///  Gets or sets the value of the Content-type HTTP header.

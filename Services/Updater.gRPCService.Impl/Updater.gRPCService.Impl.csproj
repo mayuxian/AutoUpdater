@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Updater.CommService.Interface\Updater.CommService.Interface.csproj" />
+    <ProjectReference Include="..\..\Updater.gRPCService.Protocol\Updater.gRPCService.Protocol.csproj" />
+  </ItemGroup>
+
+</Project>

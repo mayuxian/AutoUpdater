@@ -1,6 +1,7 @@
 ﻿using AutoUpdater.Core;
 using AutoUpdater.Interface;
 using System;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace AutoUpdater
@@ -9,8 +10,9 @@ namespace AutoUpdater
     {
         public Task<bool> CheckUpdate()
         {
-            return Task.FromResult(true); 
+            return Task.FromResult(true);
 
+            //HttpWebRequest
             //AssemeblyLoader.CreateInstance()
         }
     }

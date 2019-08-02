@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AutoUpdater.Grpc.Protocol
+namespace Updater.WebSocket.Impl
 {
     public class Class1
     {

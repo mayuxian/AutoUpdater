@@ -9,7 +9,7 @@ namespace AutoUpdater
     {
         public AppManager()
         {
-            HttpHelper httpHelper = new HttpHelper();
+            
         }
     }
 }

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package Updater.gRPCService.Protocol;
+
+service IUpdateService{
+  rpc GetVersionInfo() returns (VersionInfo){}
+  rpc DownloadFile(string url,string downloadPath) returns(bool){}
+}
+message VersionInfo {
+  string Id;
+  string Name;
+  string Description;
+  string TimeStamp;
+}
