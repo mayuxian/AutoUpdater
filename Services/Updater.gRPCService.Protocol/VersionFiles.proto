@@ -2,7 +2,11 @@
 
 package Updater.gRPCService.Protocol;  
 
-message VersionFile{
+message FileInfo{
   string id = 1;
   string RelativePath = 2;
+}
+
+message VersionInfo{
+  repeated FileInfo FileInfos = 1;
 }

@@ -11,7 +11,7 @@ namespace AutoUpdater.Grpc.Impl
     {
         public MsgServiceImpl()
         {
-
+         
         }
 
         public override async Task<GetMsgSumReply> GetSum(GetMsgNumRequest request, ServerCallContext context)

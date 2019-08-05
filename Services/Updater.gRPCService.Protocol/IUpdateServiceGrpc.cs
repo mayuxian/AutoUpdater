@@ -12,24 +12,22 @@ namespace Updater.GRPCService.Protocol {
   {
     static readonly string __ServiceName = "Updater.gRPCService.Protocol.IUpdateService";
 
-    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.GetVersionInfoRquest> __Marshaller_Updater_gRPCService_Protocol_GetVersionInfoRquest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.GetVersionInfoRquest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.VersionInfo> __Marshaller_Updater_gRPCService_Protocol_VersionInfo = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.VersionInfo.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.DownloadRequest> __Marshaller_Updater_gRPCService_Protocol_DownloadRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.DownloadRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.DownloadResult> __Marshaller_Updater_gRPCService_Protocol_DownloadResult = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.DownloadResult.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.Request> __Marshaller_Updater_gRPCService_Protocol_Request = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.Request.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Updater.GRPCService.Protocol.Response> __Marshaller_Updater_gRPCService_Protocol_Response = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Updater.GRPCService.Protocol.Response.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::Updater.GRPCService.Protocol.GetVersionInfoRquest, global::Updater.GRPCService.Protocol.VersionInfo> __Method_GetVersionInfo = new grpc::Method<global::Updater.GRPCService.Protocol.GetVersionInfoRquest, global::Updater.GRPCService.Protocol.VersionInfo>(
+    static readonly grpc::Method<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response> __Method_GetResponseAsync = new grpc::Method<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetVersionInfo",
-        __Marshaller_Updater_gRPCService_Protocol_GetVersionInfoRquest,
-        __Marshaller_Updater_gRPCService_Protocol_VersionInfo);
+        "GetResponseAsync",
+        __Marshaller_Updater_gRPCService_Protocol_Request,
+        __Marshaller_Updater_gRPCService_Protocol_Response);
 
-    static readonly grpc::Method<global::Updater.GRPCService.Protocol.DownloadRequest, global::Updater.GRPCService.Protocol.DownloadResult> __Method_DownloadFile = new grpc::Method<global::Updater.GRPCService.Protocol.DownloadRequest, global::Updater.GRPCService.Protocol.DownloadResult>(
-        grpc::MethodType.Unary,
+    static readonly grpc::Method<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response> __Method_GetResponseStreamAsync = new grpc::Method<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response>(
+        grpc::MethodType.ServerStreaming,
         __ServiceName,
-        "DownloadFile",
-        __Marshaller_Updater_gRPCService_Protocol_DownloadRequest,
-        __Marshaller_Updater_gRPCService_Protocol_DownloadResult);
+        "GetResponseStreamAsync",
+        __Marshaller_Updater_gRPCService_Protocol_Request,
+        __Marshaller_Updater_gRPCService_Protocol_Response);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -41,12 +39,12 @@ namespace Updater.GRPCService.Protocol {
     [grpc::BindServiceMethod(typeof(IUpdateService), "BindService")]
     public abstract partial class IUpdateServiceBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::Updater.GRPCService.Protocol.VersionInfo> GetVersionInfo(global::Updater.GRPCService.Protocol.GetVersionInfoRquest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Updater.GRPCService.Protocol.Response> GetResponseAsync(global::Updater.GRPCService.Protocol.Request request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::Updater.GRPCService.Protocol.DownloadResult> DownloadFile(global::Updater.GRPCService.Protocol.DownloadRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task GetResponseStreamAsync(global::Updater.GRPCService.Protocol.Request request, grpc::IServerStreamWriter<global::Updater.GRPCService.Protocol.Response> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -76,37 +74,29 @@ namespace Updater.GRPCService.Protocol {
       {
       }
 
-      public virtual global::Updater.GRPCService.Protocol.VersionInfo GetVersionInfo(global::Updater.GRPCService.Protocol.GetVersionInfoRquest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Updater.GRPCService.Protocol.Response GetResponseAsync(global::Updater.GRPCService.Protocol.Request request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetVersionInfo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetResponseAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::Updater.GRPCService.Protocol.VersionInfo GetVersionInfo(global::Updater.GRPCService.Protocol.GetVersionInfoRquest request, grpc::CallOptions options)
+      public virtual global::Updater.GRPCService.Protocol.Response GetResponseAsync(global::Updater.GRPCService.Protocol.Request request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetVersionInfo, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetResponseAsync, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.VersionInfo> GetVersionInfoAsync(global::Updater.GRPCService.Protocol.GetVersionInfoRquest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.Response> GetResponseAsyncAsync(global::Updater.GRPCService.Protocol.Request request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return GetVersionInfoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetResponseAsyncAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.VersionInfo> GetVersionInfoAsync(global::Updater.GRPCService.Protocol.GetVersionInfoRquest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.Response> GetResponseAsyncAsync(global::Updater.GRPCService.Protocol.Request request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_GetVersionInfo, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetResponseAsync, null, options, request);
       }
-      public virtual global::Updater.GRPCService.Protocol.DownloadResult DownloadFile(global::Updater.GRPCService.Protocol.DownloadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncServerStreamingCall<global::Updater.GRPCService.Protocol.Response> GetResponseStreamAsync(global::Updater.GRPCService.Protocol.Request request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return DownloadFile(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetResponseStreamAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::Updater.GRPCService.Protocol.DownloadResult DownloadFile(global::Updater.GRPCService.Protocol.DownloadRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncServerStreamingCall<global::Updater.GRPCService.Protocol.Response> GetResponseStreamAsync(global::Updater.GRPCService.Protocol.Request request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_DownloadFile, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.DownloadResult> DownloadFileAsync(global::Updater.GRPCService.Protocol.DownloadRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return DownloadFileAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::Updater.GRPCService.Protocol.DownloadResult> DownloadFileAsync(global::Updater.GRPCService.Protocol.DownloadRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_DownloadFile, null, options, request);
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetResponseStreamAsync, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override IUpdateServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -120,8 +110,8 @@ namespace Updater.GRPCService.Protocol {
     public static grpc::ServerServiceDefinition BindService(IUpdateServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetVersionInfo, serviceImpl.GetVersionInfo)
-          .AddMethod(__Method_DownloadFile, serviceImpl.DownloadFile).Build();
+          .AddMethod(__Method_GetResponseAsync, serviceImpl.GetResponseAsync)
+          .AddMethod(__Method_GetResponseStreamAsync, serviceImpl.GetResponseStreamAsync).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -130,8 +120,8 @@ namespace Updater.GRPCService.Protocol {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, IUpdateServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_GetVersionInfo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Updater.GRPCService.Protocol.GetVersionInfoRquest, global::Updater.GRPCService.Protocol.VersionInfo>(serviceImpl.GetVersionInfo));
-      serviceBinder.AddMethod(__Method_DownloadFile, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Updater.GRPCService.Protocol.DownloadRequest, global::Updater.GRPCService.Protocol.DownloadResult>(serviceImpl.DownloadFile));
+      serviceBinder.AddMethod(__Method_GetResponseAsync, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response>(serviceImpl.GetResponseAsync));
+      serviceBinder.AddMethod(__Method_GetResponseStreamAsync, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Updater.GRPCService.Protocol.Request, global::Updater.GRPCService.Protocol.Response>(serviceImpl.GetResponseStreamAsync));
     }
 
   }

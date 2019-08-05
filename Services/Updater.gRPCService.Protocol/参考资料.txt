@@ -5,3 +5,22 @@ im
 singlar
 rpc    HDFS 读写文件
 https://blog.csdn.net/shangwei1991/article/details/51182973
+
+##gRpc的授权，如下： http://doc.oschina.net/grpc?t=58010
+通过 SSL/TLS 进行服务端授权和加密 (C#)
+// Base case - No encryption/authentication
+var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
+var client = new Greeter.GreeterClient(channel);
+...
+
+// With server authentication SSL/TLS
+var channelCredentials = new SslCredentials(File.ReadAllText("roots.pem"));  // Load a custom roots file.
+var channel = new Channel("myservice.example.com", channelCredentials);
+var client = new Greeter.GreeterClient(channel);
+
+gRpc的示例工程：
+https://www.cnblogs.com/alan-lin/tag/.net%20core/
+
+gRpc的配置：
+https://docs.microsoft.com/zh-cn/aspnet/core/grpc/configuration?view=aspnetcore-3.0
+http://doc.oschina.net/grpc?t=58011

@@ -18,6 +18,7 @@ namespace AutoUpdater.Grpc.Impl
                 Ports = { new ServerPort("localhost", 40001, ServerCredentials.Insecure) }
             };
             _server.Start();
+          
 
             Console.WriteLine("grpc ServerListening On Port 40001");
             Console.WriteLine("任意键退出...");

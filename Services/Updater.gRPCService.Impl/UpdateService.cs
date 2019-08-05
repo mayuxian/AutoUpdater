@@ -29,13 +29,18 @@ namespace Updater.gRPCService.Impl
 
         public async Task<string> GetStringAsync(string url, CommOptions setting = null)
         {
-            //result.Test1
-            return null;
+            return await GetRpcStringAsync(url);
         }
 
         public Task<Response> PostAsync(string url, CommOptions setting = null)
         {
             throw new NotImplementedException();
+        }
+
+        private async Task<string> GetRpcStringAsync(string url)
+        {
+            var result = await grpcUpdateService.GetResponseAsync(new GRPCService.Protocol.Request(), null);
+            return result.Content.ToString();
         }
     }
 
