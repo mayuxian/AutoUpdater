@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Updater.gRPCService.Impl;
 
 namespace MainAppTest
 {
@@ -23,6 +24,13 @@ namespace MainAppTest
         public MainWindow()
         {
             InitializeComponent();
+            Startup();
+        }
+
+        public async void Startup()
+        {
+            UpdateService serive = new UpdateService();
+            var result = await serive.PostAsync(null, null);
         }
     }
 }

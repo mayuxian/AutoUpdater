@@ -26,6 +26,12 @@ namespace Updater.CommService.Interface
         public Encoding ContentEncoding { get; set; } = Encoding.UTF8;
 
         /// <summary>
+        /// Gets or sets the value of the AcceptContentEncoding HTTP header.
+        /// The default value is UTF-8;
+        /// </summary>
+        public Encoding AcceptContentEncoding { get; set; } = Encoding.UTF8;
+
+        /// <summary>
         /// Gets or sets the value of the AutomaticDecompression HTTP Request.
         /// The default value is true.
         /// </summary>
@@ -48,6 +54,6 @@ namespace Updater.CommService.Interface
         /// and System.Net.HttpWebRequest.GetRequestStream methods.
         /// The default value is 100,000 milliseconds (100 seconds).
         /// </summary>
-        public int Timeout { get; set; }
+        public int Timeout { get; set; } = 100000;
     }
 }

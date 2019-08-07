@@ -25,32 +25,32 @@ namespace Updater.GRPCService.Protocol {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChRJVXBkYXRlU2VydmljZS5wcm90bxIcVXBkYXRlci5nUlBDU2VydmljZS5Q",
-            "cm90b2NvbCJGCgdSZXF1ZXN0Eg8KB0NvbnRlbnQYASABKAwSFQoNQ29udGVu",
-            "dExlbmd0aBgCIAEoBRITCgtDb250ZW50VHlwZRgDIAEoCSJbCghSZXNwb25z",
-            "ZRIPCgdDb250ZW50GAEgASgMEhIKClN0YXR1c0NvZGUYAiABKAUSFQoNQ29u",
-            "dGVudExlbmd0aBgDIAEoBRITCgtDb250ZW50VHlwZRgEIAEoCTLgAQoOSVVw",
-            "ZGF0ZVNlcnZpY2USYQoQR2V0UmVzcG9uc2VBc3luYxIlLlVwZGF0ZXIuZ1JQ",
-            "Q1NlcnZpY2UuUHJvdG9jb2wuUmVxdWVzdBomLlVwZGF0ZXIuZ1JQQ1NlcnZp",
-            "Y2UuUHJvdG9jb2wuUmVzcG9uc2USawoWR2V0UmVzcG9uc2VTdHJlYW1Bc3lu",
-            "YxIlLlVwZGF0ZXIuZ1JQQ1NlcnZpY2UuUHJvdG9jb2wuUmVxdWVzdBomLlVw",
-            "ZGF0ZXIuZ1JQQ1NlcnZpY2UuUHJvdG9jb2wuUmVzcG9uc2UiADABYgZwcm90",
-            "bzM="));
+            "cm90b2NvbCJJCgpScGNSZXF1ZXN0Eg8KB0NvbnRlbnQYASABKAwSFQoNQ29u",
+            "dGVudExlbmd0aBgCIAEoBRITCgtDb250ZW50VHlwZRgDIAEoCSJeCgtScGNS",
+            "ZXNwb25zZRIPCgdDb250ZW50GAEgASgMEhIKClN0YXR1c0NvZGUYAiABKAUS",
+            "FQoNQ29udGVudExlbmd0aBgDIAEoBRITCgtDb250ZW50VHlwZRgEIAEoCTLi",
+            "AQoOSVVwZGF0ZVNlcnZpY2USYgoLR2V0UmVzcG9uc2USKC5VcGRhdGVyLmdS",
+            "UENTZXJ2aWNlLlByb3RvY29sLlJwY1JlcXVlc3QaKS5VcGRhdGVyLmdSUENT",
+            "ZXJ2aWNlLlByb3RvY29sLlJwY1Jlc3BvbnNlEmwKEUdldFJlc3BvbnNlU3Ry",
+            "ZWFtEiguVXBkYXRlci5nUlBDU2VydmljZS5Qcm90b2NvbC5ScGNSZXF1ZXN0",
+            "GikuVXBkYXRlci5nUlBDU2VydmljZS5Qcm90b2NvbC5ScGNSZXNwb25zZSIA",
+            "MAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Updater.GRPCService.Protocol.Request), global::Updater.GRPCService.Protocol.Request.Parser, new[]{ "Content", "ContentLength", "ContentType" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Updater.GRPCService.Protocol.Response), global::Updater.GRPCService.Protocol.Response.Parser, new[]{ "Content", "StatusCode", "ContentLength", "ContentType" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Updater.GRPCService.Protocol.RpcRequest), global::Updater.GRPCService.Protocol.RpcRequest.Parser, new[]{ "Content", "ContentLength", "ContentType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Updater.GRPCService.Protocol.RpcResponse), global::Updater.GRPCService.Protocol.RpcResponse.Parser, new[]{ "Content", "StatusCode", "ContentLength", "ContentType" }, null, null, null)
           }));
     }
     #endregion
 
   }
   #region Messages
-  public sealed partial class Request : pb::IMessage<Request> {
-    private static readonly pb::MessageParser<Request> _parser = new pb::MessageParser<Request>(() => new Request());
+  public sealed partial class RpcRequest : pb::IMessage<RpcRequest> {
+    private static readonly pb::MessageParser<RpcRequest> _parser = new pb::MessageParser<RpcRequest>(() => new RpcRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Request> Parser { get { return _parser; } }
+    public static pb::MessageParser<RpcRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -63,14 +63,14 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Request() {
+    public RpcRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Request(Request other) : this() {
+    public RpcRequest(RpcRequest other) : this() {
       content_ = other.content_;
       contentLength_ = other.contentLength_;
       contentType_ = other.contentType_;
@@ -78,8 +78,8 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Request Clone() {
-      return new Request(this);
+    public RpcRequest Clone() {
+      return new RpcRequest(this);
     }
 
     /// <summary>Field number for the "Content" field.</summary>
@@ -123,11 +123,11 @@ namespace Updater.GRPCService.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Request);
+      return Equals(other as RpcRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Request other) {
+    public bool Equals(RpcRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -195,7 +195,7 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Request other) {
+    public void MergeFrom(RpcRequest other) {
       if (other == null) {
         return;
       }
@@ -237,11 +237,11 @@ namespace Updater.GRPCService.Protocol {
 
   }
 
-  public sealed partial class Response : pb::IMessage<Response> {
-    private static readonly pb::MessageParser<Response> _parser = new pb::MessageParser<Response>(() => new Response());
+  public sealed partial class RpcResponse : pb::IMessage<RpcResponse> {
+    private static readonly pb::MessageParser<RpcResponse> _parser = new pb::MessageParser<RpcResponse>(() => new RpcResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<Response> Parser { get { return _parser; } }
+    public static pb::MessageParser<RpcResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -254,14 +254,14 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Response() {
+    public RpcResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Response(Response other) : this() {
+    public RpcResponse(RpcResponse other) : this() {
       content_ = other.content_;
       statusCode_ = other.statusCode_;
       contentLength_ = other.contentLength_;
@@ -270,8 +270,8 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public Response Clone() {
-      return new Response(this);
+    public RpcResponse Clone() {
+      return new RpcResponse(this);
     }
 
     /// <summary>Field number for the "Content" field.</summary>
@@ -329,11 +329,11 @@ namespace Updater.GRPCService.Protocol {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as Response);
+      return Equals(other as RpcResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(Response other) {
+    public bool Equals(RpcResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -410,7 +410,7 @@ namespace Updater.GRPCService.Protocol {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(Response other) {
+    public void MergeFrom(RpcResponse other) {
       if (other == null) {
         return;
       }
