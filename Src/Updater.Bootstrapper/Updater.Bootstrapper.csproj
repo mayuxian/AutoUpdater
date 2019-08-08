@@ -10,9 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Ma.DIService\Ma.DIService.csproj" />
-    <ProjectReference Include="..\Framework\Ma.Logging.Log4net\Ma.Logging.Log4net.csproj" />
-    <ProjectReference Include="..\Framework\Ma.Logging\Ma.Logging.csproj" />
+    <ProjectReference Include="..\..\Framework\Ma.DIService\Ma.DIService.csproj" />
+    <ProjectReference Include="..\..\Framework\Ma.Logging.Log4net\Ma.Logging.Log4net.csproj" />
+    <ProjectReference Include="..\..\Framework\Ma.Logging\Ma.Logging.csproj" />
   </ItemGroup>
 
 </Project>
