@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Updater.CommService.Interface\Updater.CommService.Interface.csproj" />
+    <ProjectReference Include="..\Updater.CommService.Interface\Updater.CommService.Interface.csproj">
+      <Private>false</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Updater.gRPCService.Protocol\Updater.gRPCService.Protocol.csproj" />
   </ItemGroup>
 
