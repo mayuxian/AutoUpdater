@@ -6,7 +6,8 @@ namespace Updater.gRPCService.Server
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Console.WriteLine("Hello World!");
+            GrpcService.Start();
         }
     }
 }

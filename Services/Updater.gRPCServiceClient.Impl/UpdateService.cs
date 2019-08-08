@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Updater.CommService.Interface;
@@ -6,24 +7,26 @@ using Updater.GRPCService.Protocol;
 
 namespace Updater.gRPCService.Impl
 {
-    public class UpdateService //: ICommService
+    public class UpdateService : ICommServiceBase<Response, object>
     {
         //private static Server _server;
         private static Channel _channel;
-        //private IUpdateService.IUpdateServiceClient _updateServiceClient;
-        private GrpcUpdateServiceClient _updateServiceClient;
+        private IUpdateService.IUpdateServiceClient _updateServiceClient;
+        //private GrpcUpdateServiceClient _updateServiceClient;
         private CommOptions _defaultCommOptions = new CommOptions();
 
         public UpdateService()
         {
-            //_updateServiceClient = new IUpdateService.IUpdateServiceClient(_channel);
-            //Collection<ChannelOption> list = new Collection<ChannelOption>();
-            //ChannelOption channelOption = new ChannelOption(ChannelOptions.SoReuseport)
+        }
 
-            _channel = new Channel("", ChannelCredentials.Insecure, null);
-            _updateServiceClient = new GrpcUpdateServiceClient(_channel);
-            //_channel.ConnectAsync(null);
-            //_channel.State==ChannelState.TransientFailure
+        public IUpdateService.IUpdateServiceClient CreateClientService(string url)
+        {
+            ChannelOption co = new ChannelOption("", ""); ;
+            var cos = new Collection<ChannelOption>();
+            cos.Add(co);
+
+            var channel = new Channel(url, ChannelCredentials.Insecure, null);
+            return new IUpdateService.IUpdateServiceClient(channel);
         }
 
         public void ConfigDefaultOptions(CommOptions options)
@@ -31,42 +34,42 @@ namespace Updater.gRPCService.Impl
             _defaultCommOptions = options;
         }
 
-        public async Task<Response> PostAsync(string url, CommOptions options = null)
-        {
-            //Header等的添加，参照：https://blog.csdn.net/xuduorui/article/details/78278808
-            //http://doc.oschina.net/grpc?t=58011
-            var rpcRequest = new RpcRequest();
-            var metadata = new Metadata();
-            metadata.Add("Method", "GET");
-            var callOptions = new CallOptions(metadata, new DateTime());
-
-            callOptions.WithDeadline(new DateTime());
-
-            var r1 = await _updateServiceClient.GetResponseAsync(rpcRequest, callOptions);
-            var r2 = await _updateServiceClient.GetResponseAsync(rpcRequest, new Metadata(), new DateTime());
-
-            var result = _updateServiceClient.GetResponseStream(rpcRequest, callOptions);
-            var streamReader = result.ResponseStream;
-            //streamReader.MoveNext(new System.Threading.CancellationToken(true));
-
-            return await Task.FromResult<Response>(null);
-        }
-
-
         public Task<Response> GetAsync(string url, CommOptions options = null)
         {
             //_updateServiceClient.GetResponseAsync
             throw new NotImplementedException();
         }
 
-        public Task<byte[]> GetBytesAsync(string url, CommOptions options = null)
+        public async Task<byte[]> GetBytesAsync(string url, CommOptions options = null)
         {
-            throw new NotImplementedException();
+            var service = CreateClientService(url);
+            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, (options == null) ? _defaultCommOptions : options);
+            var rpcRequest = new RpcRequest();
+            var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
+            return result.Content.ToByteArray();
         }
 
         public async Task<string> GetStringAsync(string url, CommOptions options = null)
         {
-            return await GetRpcStringAsync(url);
+            var service = CreateClientService(url);
+            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, (options == null) ? _defaultCommOptions : options);
+            var rpcRequest = new RpcRequest();
+            var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
+            return result.Content.ToString();
+        }
+
+        public async Task<Response> PostAsync(string url, CommOptions options = null)
+        {
+            var service = CreateClientService(url);
+            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.POST, (options == null) ? _defaultCommOptions : options);
+            var rpcRequest = new RpcRequest();
+            var r1 = await service.GetResponseAsync(rpcRequest, callOptions);
+
+            //var result = service.GetResponseStream(rpcRequest, callOptions);
+            //var streamReader = result.ResponseStream;
+            //streamReader.MoveNext(new System.Threading.CancellationToken(true));
+
+            return await Task.FromResult<Response>(null);
         }
 
         private async Task<string> GetRpcStringAsync(string url)

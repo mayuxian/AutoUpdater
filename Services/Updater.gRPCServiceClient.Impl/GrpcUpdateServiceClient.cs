@@ -7,6 +7,7 @@ using Updater.GRPCService.Protocol;
 
 namespace Updater.gRPCService.Impl
 {
+    //TODO:模拟完成后，重命名为IUpdateService，去掉Client
     public class GrpcUpdateServiceClient : IUpdateService.IUpdateServiceClient
     {
         public EventHandler<GrpcErrorEventArgs> GrpcCommunicationError;

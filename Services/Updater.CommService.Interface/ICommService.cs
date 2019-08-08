@@ -3,12 +3,12 @@ using System.Threading.Tasks;
 
 namespace Updater.CommService.Interface
 {
-    public interface ICommService : ICommServiceBase<IResponse<object>, object>
-    {
+    //public interface ICommService<IResponse> : ICommServiceBase<IResponse<object>, object>
+    //{
 
-    }
+    //}
 
-    public interface ICommServiceBase<TResponse,TResult>
+    public interface ICommServiceBase<TResponse, TResult>
         where TResponse : IResponse<TResult>
     {
         Task<TResponse> GetAsync(string url, CommOptions setting = null);

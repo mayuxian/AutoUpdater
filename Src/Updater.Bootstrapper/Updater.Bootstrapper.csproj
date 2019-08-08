@@ -13,6 +13,8 @@
     <ProjectReference Include="..\..\Framework\Ma.DIService\Ma.DIService.csproj" />
     <ProjectReference Include="..\..\Framework\Ma.Logging.Log4net\Ma.Logging.Log4net.csproj" />
     <ProjectReference Include="..\..\Framework\Ma.Logging\Ma.Logging.csproj" />
+    <ProjectReference Include="..\..\Services\Updater.CommService.Interface\Updater.CommService.Interface.csproj" />
+    <ProjectReference Include="..\..\Services\Updater.gRPCServiceClient.Impl\Updater.gRPCServiceClient.Impl.csproj" />
   </ItemGroup>
 
 </Project>

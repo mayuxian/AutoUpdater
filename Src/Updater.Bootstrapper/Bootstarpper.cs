@@ -4,6 +4,8 @@ using Ma.Logging;
 using Ma.Logging.Log4net;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Updater.CommService.Interface;
+using Updater.gRPCService.Impl;
 
 namespace Updater.Bootstrapper
 {
@@ -17,6 +19,8 @@ namespace Updater.Bootstrapper
             //2.依赖注册自定义的内容
             var services = DependencyService.Instance;
             services.AddSingleton<ILogProvider, LogProvider>();
+            services.AddSingleton<ICommServiceBase<Response, object>,UpdateService>();
+
             //DependencyService.Instance.AddSingleton(typeof(ILogProvider), new LogProvider());
 
             var provider = services.BuildServiceProvider();
