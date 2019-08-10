@@ -32,9 +32,10 @@ namespace Updater.gRPCService.Impl
             metadata.Add("user-agent", commOptions.UserAgent);
             //metadata.Add("grpc-message-type", ??);   //消息类型 → “grpc-message-type” {消息模式的类型名}
 
-            var deadline = new DateTime(10 * commOptions.Timeout); //单位为100纳秒，所以需要*10
+            var deadline = DateTime.MinValue; //单位为100纳秒，所以需要*10
+            deadline.AddMilliseconds(commOptions.Timeout);
 
-            var callOptions = new CallOptions(metadata, deadline);
+            var callOptions = new CallOptions(null, null); //暂时不添加超时
             return callOptions;
         }
     }

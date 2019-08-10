@@ -51,11 +51,14 @@ namespace Updater.gRPCService.Impl
 
         public async Task<string> GetStringAsync(string url, CommOptions options = null)
         {
+            var commOptions = (options == null) ? _defaultCommOptions : options;
             var service = CreateClientService(url);
-            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, (options == null) ? _defaultCommOptions : options);
+            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, commOptions);
             var rpcRequest = new RpcRequest();
-            var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
-            return result.Content.ToString();
+            rpcRequest.Content = Google.Protobuf.ByteString.CopyFromUtf8(url);
+            var result = await service.GetResponseAsync(rpcRequest);
+            //var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
+            return result.Content.ToString(commOptions.AcceptContentEncoding);
         }
 
         public async Task<Response> PostAsync(string url, CommOptions options = null)
