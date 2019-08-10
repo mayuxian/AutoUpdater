@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Updater.gRPCService.Impl;
+using Path = System.IO.Path;
 
 namespace UpdateTest
 {
@@ -33,6 +35,13 @@ namespace UpdateTest
             return result;
         }
 
+        private async Task<Stream> GetStreamResponse(string url, string content)
+        {
+            UpdateService service = new UpdateService();
+            var result = await service.GetStreamAsync(url, content);
+            return result;
+        }
+
         private async void BtnRequest_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -42,7 +51,26 @@ namespace UpdateTest
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw;
+            }
+        }
+
+        private async void BtnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var stream = await this.GetStreamResponse(txtUrl.Text.Trim(), txtDownloadFilePath.Text.Trim());
+                var filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, txtDownloadFilePath.Text.Trim()));
+                using (stream)
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        File.AppendAllText(filePath, reader.ReadToEnd());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

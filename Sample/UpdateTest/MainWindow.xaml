@@ -8,10 +8,13 @@
         Title="MainWindow" Height="490.463" Width="659.667">
     <Grid>
         <Button Name="btnRequest" Content="请求" HorizontalAlignment="Left" Margin="498,35,0,0" VerticalAlignment="Top" Width="75" Click="BtnRequest_Click"/>
-        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="144" Margin="93,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
+        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="144" Margin="93,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
         <TextBox x:Name="txtUrl" HorizontalAlignment="Left" Height="23" Margin="92,36,0,0" TextWrapping="Wrap" Text="127.0.0.1:53100" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
         <Label Content="Url:" HorizontalAlignment="Left" Margin="57,36,0,0" VerticalAlignment="Top"/>
-        <Label Content="Response:" HorizontalAlignment="Left" Margin="19,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.048,-0.039"/>
+        <Label Content="Response:" HorizontalAlignment="Left" Margin="19,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.048,-0.039"/>
+        <Button x:Name="btnDownload" Content="下载" HorizontalAlignment="Left" Margin="498,256,0,0" VerticalAlignment="Top" Width="75" Click="BtnDownload_Click" />
+        <TextBox x:Name="txtDownloadFilePath" HorizontalAlignment="Left" Height="23" Margin="92,252,0,0" TextWrapping="Wrap" Text="test.txt" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
+        <Label Content="下载文件:" HorizontalAlignment="Left" Margin="26,251,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

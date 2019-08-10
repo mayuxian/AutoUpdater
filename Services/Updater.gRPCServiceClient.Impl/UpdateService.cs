@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Updater.CommService.Interface;
@@ -13,7 +15,9 @@ namespace Updater.gRPCService.Impl
         private static Channel _channel;
         private IUpdateService.IUpdateServiceClient _updateServiceClient;
         //private GrpcUpdateServiceClient _updateServiceClient;
+
         private CommOptions _defaultCommOptions = new CommOptions();
+        public CommOptions DefaultCommOptions { get => _defaultCommOptions; set => _defaultCommOptions = value; }
 
         public UpdateService()
         {
@@ -21,82 +25,83 @@ namespace Updater.gRPCService.Impl
 
         public IUpdateService.IUpdateServiceClient CreateClientService(string url)
         {
+            //TODO:ChannelOption的具体功能
             ChannelOption co = new ChannelOption("", ""); ;
             var cos = new Collection<ChannelOption>();
             cos.Add(co);
 
-            var channel = new Channel(url, ChannelCredentials.Insecure, null);
+            var channel = new Channel(url, ChannelCredentials.Insecure);
             return new IUpdateService.IUpdateServiceClient(channel);
         }
 
-        public void ConfigDefaultOptions(CommOptions options)
-        {
-            _defaultCommOptions = options;
-        }
-
-        public Task<Response> GetAsync(string url, CommOptions options = null)
+        public Task<Response> GetAsync(string url, string requestContent = null, CommOptions options = null)
         {
             //_updateServiceClient.GetResponseAsync
             throw new NotImplementedException();
         }
 
-        public async Task<byte[]> GetBytesAsync(string url, CommOptions options = null)
+        public async Task<byte[]> GetBytesAsync(string url, string requestContent = null, CommOptions options = null)
         {
             var service = CreateClientService(url);
-            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, (options == null) ? _defaultCommOptions : options);
+            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, (options == null) ? DefaultCommOptions : options);
             var rpcRequest = new RpcRequest();
+            //rpcRequest.Content
             var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
             return result.Content.ToByteArray();
         }
 
-        public async Task<string> GetStringAsync(string url, CommOptions options = null)
+        public async Task<string> GetStringAsync(string url, string requestContent = null, CommOptions options = null)
         {
-            var commOptions = (options == null) ? _defaultCommOptions : options;
             var service = CreateClientService(url);
-            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.GET, commOptions);
+
             var rpcRequest = new RpcRequest();
             rpcRequest.Content = Google.Protobuf.ByteString.CopyFromUtf8(url);
-            var result = await service.GetResponseAsync(rpcRequest);
-            //var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
+
+            var commOptions = (options == null) ? DefaultCommOptions : options;
+            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, commOptions);
+
+            var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
             return result.Content.ToString(commOptions.AcceptContentEncoding);
         }
 
-        public async Task<Response> PostAsync(string url, CommOptions options = null)
+        public async Task<Stream> GetStreamAsync(string url, string requestContent = null, CommOptions options = null)
         {
             var service = CreateClientService(url);
-            var callOptions = CommOptionsConverter.ConvertToCallOptions(CommMethod.POST, (options == null) ? _defaultCommOptions : options);
+
             var rpcRequest = new RpcRequest();
-            var r1 = await service.GetResponseAsync(rpcRequest, callOptions);
+            rpcRequest.Content = Google.Protobuf.ByteString.CopyFromUtf8(requestContent);
 
-            //var result = service.GetResponseStream(rpcRequest, callOptions);
-            //var streamReader = result.ResponseStream;
-            //streamReader.MoveNext(new System.Threading.CancellationToken(true));
+            var commOptions = (options == null) ? DefaultCommOptions : options;
+            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, commOptions);
 
-            return await Task.FromResult<Response>(null);
-        }
+            var cts = new CancellationTokenSource();
+            cts.CancelAfter(TimeSpan.FromMinutes(10)); //TODO:有待完善
 
-        private async Task<string> GetRpcStringAsync(string url)
-        {
-            var response = _updateServiceClient.GetResponseAsync(new RpcRequest(), new CallOptions());
-            //response.Content
+            var stream = new MemoryStream();
 
-            //EventHandler<GrpcErrorEventArgs> errorHandler = null;
-            //errorHandler = (sender, e) =>
-            //{
-            //    _updateServiceClient.GrpcCommunicationError -= errorHandler;
-            //    throw e.Exception;
-            //};
-            //_updateServiceClient.GrpcCommunicationError += errorHandler;
+            using (var response = service.GetResponseStream(rpcRequest, callOptions))
+            {
+                try
+                {
 
-            //var result = await grpcUpdateService.GetResponseAsync(new GRPCService.Protocol.Request(), null);
-            ////TODO:需要识别，出异常后返回，还是未出异常返回。
-            //return result.Content.ToString();
-            return await Task.FromResult<string>(null);
-        }
+                    while (await response.ResponseStream.MoveNext(cts.Token))
+                    {
+                        var data = response.ResponseStream.Current.Content.ToByteArray();
+                        stream.Write(data, 0, data.Length);  //TODO:需要完善成async方式。
+                    }
+                }
+                catch (RpcException ex) when (ex.StatusCode == StatusCode.Cancelled)
+                {
+                    Console.WriteLine("Stream cancelled.");
+                    //throw;
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
 
-        private async Task<bool> GetRpcStreamAsync(string url)
-        {
-            return await Task.FromResult<bool>(false);
+            return await Task.FromResult<Stream>(stream);
         }
     }
 
