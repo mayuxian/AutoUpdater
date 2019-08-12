@@ -43,17 +43,22 @@ namespace Updater.gRPCService.Server
 
             FileInfo fi = new FileInfo(filePath);
             long dataLength = fi.Length;
+            long bufferSize = 2048;
+            bufferSize = (dataLength < bufferSize) ? dataLength : bufferSize;
 
             using (StreamReader reader = new StreamReader(filePath))
             {
-                //reader.ReadAsync(null, 0, 1000);
-                RpcResponse response = new RpcResponse();
+                var buffer = new byte[bufferSize];
+                int readLength = -1;
 
-                var data = reader.ReadLine();
-                response.Content = ByteString.CopyFromUtf8(data);
-                response.ContentLength =(int)dataLength; //TODO:ContentLength应该设置为long
+                while ((readLength = await reader.BaseStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                {
+                    RpcResponse response = new RpcResponse();
+                    response.Content = ByteString.CopyFrom(buffer);
+                    response.ContentLength = dataLength;
 
-                await responseStream.WriteAsync(response);
+                    await responseStream.WriteAsync(response);
+                }
             }
 
         }

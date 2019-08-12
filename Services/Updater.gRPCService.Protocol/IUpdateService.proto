@@ -13,13 +13,13 @@ service IUpdateService{
 
 message RpcRequest{
   bytes  Content = 1;
-  int32  ContentLength = 2; //要检查数据长度
+  int64  ContentLength = 2; //要检查数据长度
   string ContentType = 3; //内容类型
 
 }
 message RpcResponse{
    bytes  Content = 1;
    int32  StatusCode = 2; //应该是个枚举，状态码
-   int32  ContentLength = 3; //要检查数据长度
+   int64  ContentLength = 3; //要检查数据长度
    string ContentType = 4; //内容类型
 }

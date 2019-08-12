@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Updater.CommService.Interface
+namespace Updater.UpdateService.Interface
 {
     public interface IRequest<T>
     {

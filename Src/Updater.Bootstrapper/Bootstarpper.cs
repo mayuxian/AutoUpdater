@@ -19,7 +19,7 @@ namespace Updater.Bootstrapper
             //2.依赖注册自定义的内容
             var services = DependencyService.Instance;
             services.AddSingleton<ILogProvider, LogProvider>();
-            services.AddSingleton<ICommServiceBase<Response, object>,UpdateService>();
+            services.AddSingleton<ICommServiceBase<Response, object>,GrpcService>();
 
             //DependencyService.Instance.AddSingleton(typeof(ILogProvider), new LogProvider());
 

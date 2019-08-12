@@ -9,7 +9,8 @@ using Updater.GRPCService.Protocol;
 
 namespace Updater.gRPCService.Impl
 {
-    public class UpdateService : ICommServiceBase<Response, object>
+    //TODO:此处应该是通信服务。 更新服务应该重新定义接口，并实现下载文件和获取版本信息等服务。
+    public class GrpcService : ICommServiceBase
     {
         //private static Server _server;
         private static Channel _channel;
@@ -19,7 +20,7 @@ namespace Updater.gRPCService.Impl
         private CommOptions _defaultCommOptions = new CommOptions();
         public CommOptions DefaultCommOptions { get => _defaultCommOptions; set => _defaultCommOptions = value; }
 
-        public UpdateService()
+        public GrpcService()
         {
         }
 
@@ -34,20 +35,29 @@ namespace Updater.gRPCService.Impl
             return new IUpdateService.IUpdateServiceClient(channel);
         }
 
-        public Task<Response> GetAsync(string url, string requestContent = null, CommOptions options = null)
-        {
-            //_updateServiceClient.GetResponseAsync
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// 获取byte数据
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="requestContent"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public async Task<byte[]> GetBytesAsync(string url, string requestContent = null, CommOptions options = null)
         {
-            var service = CreateClientService(url);
-            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, (options == null) ? DefaultCommOptions : options);
-            var rpcRequest = new RpcRequest();
-            //rpcRequest.Content
-            var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
-            return result.Content.ToByteArray();
+            //var service = CreateClientService(url);
+            //var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, (options == null) ? DefaultCommOptions : options);
+            //var rpcRequest = new RpcRequest();
+            ////TODO:此块读取byte数据，到时是否使用 GetResponseStream？ 参见GetStreamAsync函数
+            //var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
+            //return result.Content.ToByteArray();
+
+            using (var stream = await GetStreamAsync(url, requestContent, options))
+            {
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+                stream.Seek(0, SeekOrigin.Begin);
+                return buffer;
+            }
         }
 
         public async Task<string> GetStringAsync(string url, string requestContent = null, CommOptions options = null)
@@ -75,51 +85,35 @@ namespace Updater.gRPCService.Impl
             var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, commOptions);
 
             var cts = new CancellationTokenSource();
-            cts.CancelAfter(TimeSpan.FromMinutes(10)); //TODO:有待完善
+            cts.CancelAfter(TimeSpan.FromMinutes(10)); //TODO:有待调整
 
             var stream = new MemoryStream();
 
-            using (var response = service.GetResponseStream(rpcRequest, callOptions))
+            using (var response = service.GetResponseStream(rpcRequest, null, null, cts.Token))
             {
                 try
                 {
-
                     while (await response.ResponseStream.MoveNext(cts.Token))
                     {
-                        var data = response.ResponseStream.Current.Content.ToByteArray();
-                        stream.Write(data, 0, data.Length);  //TODO:需要完善成async方式。
+                        var buffer = response.ResponseStream.Current.Content.ToByteArray();
+                        stream.Write(buffer, 0, buffer.Length);  //TODO:需要完善成async方式。
                     }
+                    stream.Seek(0, SeekOrigin.Begin);
+                    //response.ResponseStream
                 }
                 catch (RpcException ex) when (ex.StatusCode == StatusCode.Cancelled)
                 {
+                    stream.Dispose();
                     Console.WriteLine("Stream cancelled.");
-                    //throw;
                 }
                 catch (Exception ex)
                 {
+                    stream.Dispose();
                     throw;
                 }
             }
 
             return await Task.FromResult<Stream>(stream);
         }
-    }
-
-    public class Response : IResponse<object>
-    {
-        /// <summary>
-        /// 是否成功
-        /// </summary>
-        public bool Success { get; set; }
-
-        /// <summary>
-        /// 结果
-        /// </summary>
-        public object Result { get; set; }
-
-        /// <summary>
-        /// 异常信息
-        /// </summary>
-        public IResponseError Error { get; set; }
     }
 }

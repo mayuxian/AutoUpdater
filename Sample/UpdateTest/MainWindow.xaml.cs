@@ -30,14 +30,14 @@ namespace UpdateTest
 
         private async Task<string> GetResponse(string url)
         {
-            UpdateService service = new UpdateService();
+            GrpcService service = new GrpcService();
             var result = await service.GetStringAsync(url);
             return result;
         }
 
         private async Task<Stream> GetStreamResponse(string url, string content)
         {
-            UpdateService service = new UpdateService();
+            GrpcService service = new GrpcService();
             var result = await service.GetStreamAsync(url, content);
             return result;
         }
@@ -58,8 +58,10 @@ namespace UpdateTest
         {
             try
             {
-                var stream = await this.GetStreamResponse(txtUrl.Text.Trim(), txtDownloadFilePath.Text.Trim());
                 var filePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, txtDownloadFilePath.Text.Trim()));
+                File.Delete(filePath);
+
+                var stream = await this.GetStreamResponse(txtUrl.Text.Trim(), txtDownloadFilePath.Text.Trim());
                 using (stream)
                 {
                     using (var reader = new StreamReader(stream))
@@ -67,9 +69,11 @@ namespace UpdateTest
                         File.AppendAllText(filePath, reader.ReadToEnd());
                     }
                 }
+                tbDownloadInfo.Text = "下载成功";
             }
             catch (Exception ex)
             {
+                tbDownloadInfo.Text = "下载失败";
                 MessageBox.Show(ex.Message);
             }
         }

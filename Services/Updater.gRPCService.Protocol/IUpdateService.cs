@@ -26,9 +26,9 @@ namespace Updater.GRPCService.Protocol {
           string.Concat(
             "ChRJVXBkYXRlU2VydmljZS5wcm90bxIcVXBkYXRlci5nUlBDU2VydmljZS5Q",
             "cm90b2NvbCJJCgpScGNSZXF1ZXN0Eg8KB0NvbnRlbnQYASABKAwSFQoNQ29u",
-            "dGVudExlbmd0aBgCIAEoBRITCgtDb250ZW50VHlwZRgDIAEoCSJeCgtScGNS",
+            "dGVudExlbmd0aBgCIAEoAxITCgtDb250ZW50VHlwZRgDIAEoCSJeCgtScGNS",
             "ZXNwb25zZRIPCgdDb250ZW50GAEgASgMEhIKClN0YXR1c0NvZGUYAiABKAUS",
-            "FQoNQ29udGVudExlbmd0aBgDIAEoBRITCgtDb250ZW50VHlwZRgEIAEoCTLi",
+            "FQoNQ29udGVudExlbmd0aBgDIAEoAxITCgtDb250ZW50VHlwZRgEIAEoCTLi",
             "AQoOSVVwZGF0ZVNlcnZpY2USYgoLR2V0UmVzcG9uc2USKC5VcGRhdGVyLmdS",
             "UENTZXJ2aWNlLlByb3RvY29sLlJwY1JlcXVlc3QaKS5VcGRhdGVyLmdSUENT",
             "ZXJ2aWNlLlByb3RvY29sLlJwY1Jlc3BvbnNlEmwKEUdldFJlc3BvbnNlU3Ry",
@@ -95,12 +95,12 @@ namespace Updater.GRPCService.Protocol {
 
     /// <summary>Field number for the "ContentLength" field.</summary>
     public const int ContentLengthFieldNumber = 2;
-    private int contentLength_;
+    private long contentLength_;
     /// <summary>
     ///要检查数据长度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ContentLength {
+    public long ContentLength {
       get { return contentLength_; }
       set {
         contentLength_ = value;
@@ -144,7 +144,7 @@ namespace Updater.GRPCService.Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (Content.Length != 0) hash ^= Content.GetHashCode();
-      if (ContentLength != 0) hash ^= ContentLength.GetHashCode();
+      if (ContentLength != 0L) hash ^= ContentLength.GetHashCode();
       if (ContentType.Length != 0) hash ^= ContentType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -163,9 +163,9 @@ namespace Updater.GRPCService.Protocol {
         output.WriteRawTag(10);
         output.WriteBytes(Content);
       }
-      if (ContentLength != 0) {
+      if (ContentLength != 0L) {
         output.WriteRawTag(16);
-        output.WriteInt32(ContentLength);
+        output.WriteInt64(ContentLength);
       }
       if (ContentType.Length != 0) {
         output.WriteRawTag(26);
@@ -182,8 +182,8 @@ namespace Updater.GRPCService.Protocol {
       if (Content.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(Content);
       }
-      if (ContentLength != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ContentLength);
+      if (ContentLength != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ContentLength);
       }
       if (ContentType.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ContentType);
@@ -202,7 +202,7 @@ namespace Updater.GRPCService.Protocol {
       if (other.Content.Length != 0) {
         Content = other.Content;
       }
-      if (other.ContentLength != 0) {
+      if (other.ContentLength != 0L) {
         ContentLength = other.ContentLength;
       }
       if (other.ContentType.Length != 0) {
@@ -224,7 +224,7 @@ namespace Updater.GRPCService.Protocol {
             break;
           }
           case 16: {
-            ContentLength = input.ReadInt32();
+            ContentLength = input.ReadInt64();
             break;
           }
           case 26: {
@@ -301,12 +301,12 @@ namespace Updater.GRPCService.Protocol {
 
     /// <summary>Field number for the "ContentLength" field.</summary>
     public const int ContentLengthFieldNumber = 3;
-    private int contentLength_;
+    private long contentLength_;
     /// <summary>
     ///要检查数据长度
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int ContentLength {
+    public long ContentLength {
       get { return contentLength_; }
       set {
         contentLength_ = value;
@@ -352,7 +352,7 @@ namespace Updater.GRPCService.Protocol {
       int hash = 1;
       if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (StatusCode != 0) hash ^= StatusCode.GetHashCode();
-      if (ContentLength != 0) hash ^= ContentLength.GetHashCode();
+      if (ContentLength != 0L) hash ^= ContentLength.GetHashCode();
       if (ContentType.Length != 0) hash ^= ContentType.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -375,9 +375,9 @@ namespace Updater.GRPCService.Protocol {
         output.WriteRawTag(16);
         output.WriteInt32(StatusCode);
       }
-      if (ContentLength != 0) {
+      if (ContentLength != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(ContentLength);
+        output.WriteInt64(ContentLength);
       }
       if (ContentType.Length != 0) {
         output.WriteRawTag(34);
@@ -397,8 +397,8 @@ namespace Updater.GRPCService.Protocol {
       if (StatusCode != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(StatusCode);
       }
-      if (ContentLength != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ContentLength);
+      if (ContentLength != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(ContentLength);
       }
       if (ContentType.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ContentType);
@@ -420,7 +420,7 @@ namespace Updater.GRPCService.Protocol {
       if (other.StatusCode != 0) {
         StatusCode = other.StatusCode;
       }
-      if (other.ContentLength != 0) {
+      if (other.ContentLength != 0L) {
         ContentLength = other.ContentLength;
       }
       if (other.ContentType.Length != 0) {
@@ -446,7 +446,7 @@ namespace Updater.GRPCService.Protocol {
             break;
           }
           case 24: {
-            ContentLength = input.ReadInt32();
+            ContentLength = input.ReadInt64();
             break;
           }
           case 34: {
