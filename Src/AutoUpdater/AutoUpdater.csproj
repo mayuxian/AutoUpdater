@@ -9,6 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Ma.DIService\Ma.DIService.csproj" />
+    <ProjectReference Include="..\..\Services\Updater.gRPCServiceClient.Impl\Updater.gRPCServiceClient.Impl.csproj" />
     <ProjectReference Include="..\..\Services\Updater.UpdateService.Interface\Updater.UpdateService.Interface.csproj" />
   </ItemGroup>
 

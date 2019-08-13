@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoUpdater.Core;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,44 +13,14 @@ namespace AutoUpdater.Updaters
     /// <remarks>
     /// 默认更新器
     /// </remarks>
-    internal class InteractionUpdater : IUpdateFlow
+    internal class InteractionUpdater : UpdateManager
     {
-        public Task<bool> ApplyUpdate()
+        public void CheckUpdate()
         {
-            throw new NotImplementedException();
+
         }
 
-        public Task<bool> CheckUpdate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> CloseApp(string processName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CommunicationExceptionHandle()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DownloadFileExceptionHandle()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> StartUpate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UnhandlePlatformExceptionHandle()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> WaitAppExit()
+        public override void Start()
         {
             throw new NotImplementedException();
         }

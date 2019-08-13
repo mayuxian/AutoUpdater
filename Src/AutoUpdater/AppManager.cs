@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoUpdater.Updaters;
+using Ma.DIService;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,7 @@ namespace AutoUpdater
 
         public Task<bool> CheckUpdate()
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }

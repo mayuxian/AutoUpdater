@@ -6,10 +6,11 @@ namespace Ma.DIService
     public static class DependencyService
     {
         public static IServiceCollection Instance = new ServiceCollection();
+        public static ServiceProvider ServiceProvider = Instance.BuildServiceProvider();
 
         static DependencyService()
         {
-            //Instance.AddSingleton
+         
         }
 
         public static void AddSingleton()
