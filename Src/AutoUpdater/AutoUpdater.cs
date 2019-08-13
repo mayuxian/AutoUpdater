@@ -1,8 +1,8 @@
 ﻿using AutoUpdater.Core;
-using AutoUpdater.Interface;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using Updater.UpdateService.Interface;
 
 namespace AutoUpdater
 {

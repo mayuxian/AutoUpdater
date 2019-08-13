@@ -1,15 +1,21 @@
-﻿using AutoUpdater.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Updater.UpdateService.Interface;
 
 namespace AutoUpdater
 {
-    public class AppManager
+    public class AppManager : IAppUpdateFlow
     {
         public AppManager()
         {
             
+        }
+
+        public Task<bool> CheckUpdate()
+        {
+            throw new NotImplementedException();
         }
     }
 }
