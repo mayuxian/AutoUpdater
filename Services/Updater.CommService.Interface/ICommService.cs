@@ -19,7 +19,7 @@ namespace Updater.CommService.Interface
     /// requestContent如果是结构化的建议是json字符串
     /// 暂不考虑post的方式
     /// </remarks>
-    public interface ICommServiceBase
+    public interface ICommService
     {
         Task<string> GetStringAsync(string url, string requestContent = null, CommOptions options = null);
 

@@ -6,9 +6,13 @@ namespace Updater.UpdateService.Interface
     public interface IUpdateFlow //: IUpdateException
     {
         //TODO:发指令或者直接关闭进程
-        Task<bool> CloseApp(string processName);
 
-        Task<bool> WaitAppExit();
+        //先检查大版本
+        //Task<string> GetMajorVersion(); 
+
+        //Task<bool> CheckMajorVersion(string majorVersion);
+
+        //Task<bool> UpdateSnapshot();
 
         //获取版本信息
         Task<IVersionInfo> GetVersionInfo();
@@ -16,6 +20,8 @@ namespace Updater.UpdateService.Interface
         Task<IUpdateCheckResult> CheckUpdate(IVersionInfo versionInfo);
 
         Task<bool> Download(IUpdateCheckResult updateCheckResult);
+
+        Task<bool> CloseApp(string processName);
 
         Task<bool> ApplyUpdate(IUpdateCheckResult updateCheckResult);
     }

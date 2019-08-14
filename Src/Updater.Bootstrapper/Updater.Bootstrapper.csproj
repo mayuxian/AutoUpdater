@@ -15,6 +15,7 @@
     <ProjectReference Include="..\..\Framework\Ma.Logging\Ma.Logging.csproj" />
     <ProjectReference Include="..\..\Services\Updater.CommService.Interface\Updater.CommService.Interface.csproj" />
     <ProjectReference Include="..\..\Services\Updater.gRPCServiceClient.Impl\Updater.gRPCServiceClient.Impl.csproj" />
+    <ProjectReference Include="..\..\Services\Updater.UpdateService.Interface\Updater.UpdateService.Interface.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,8 +5,10 @@ namespace Updater.UpdateService.Interface
 {
     public interface IUpdateService
     {
-        Task<IVersionInfo> GetVersionInfo();
+        Task<string> GetMajorVersion(string url);
 
-        Task<bool> DownloadFile(string url, string downloadPath);
+        Task<IVersionInfo> GetVersionInfo(string url);
+
+        Task<bool> DownloadFile(string url, string downloadFilePath);
     }
 }

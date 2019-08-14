@@ -10,7 +10,7 @@ using Updater.GRPCService.Protocol;
 namespace Updater.gRPCService.Impl
 {
     //TODO:此处应该是通信服务。 更新服务应该重新定义接口，并实现下载文件和获取版本信息等服务。
-    public class GrpcService : ICommServiceBase
+    public class GrpcService : ICommService
     {
         //private static Server _server;
         private static Channel _channel;

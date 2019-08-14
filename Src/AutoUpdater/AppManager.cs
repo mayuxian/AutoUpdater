@@ -19,5 +19,10 @@ namespace AutoUpdater
         {
             return null;
         }
+
+        private Task<bool> CopyTempUpdater()
+        {
+            return null;
+        }
     }
 }
