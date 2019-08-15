@@ -24,6 +24,11 @@ namespace Updater.gRPCService.Impl
         {
         }
 
+        public CommOptions GetCommOptions()
+        {
+            return _defaultCommOptions;
+        }
+
         public IUpdateService.IUpdateServiceClient CreateClientService(string url)
         {
             //TODO:ChannelOption的具体功能
@@ -67,11 +72,11 @@ namespace Updater.gRPCService.Impl
             var rpcRequest = new RpcRequest();
             rpcRequest.Content = Google.Protobuf.ByteString.CopyFromUtf8(url);
 
-            var commOptions = (options == null) ? DefaultCommOptions : options;
-            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, commOptions);
+            DefaultCommOptions = (options == null) ? DefaultCommOptions : options;
+            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(DefaultCommOptions);
 
             var result = await service.GetResponseAsync(rpcRequest, callOptions).ResponseAsync;
-            return result.Content.ToString(commOptions.AcceptContentEncoding);
+            return result.Content.ToString(DefaultCommOptions.AcceptContentEncoding);
         }
 
         public async Task<Stream> GetStreamAsync(string url, string requestContent = null, CommOptions options = null)
@@ -81,8 +86,8 @@ namespace Updater.gRPCService.Impl
             var rpcRequest = new RpcRequest();
             rpcRequest.Content = Google.Protobuf.ByteString.CopyFromUtf8(requestContent);
 
-            var commOptions = (options == null) ? DefaultCommOptions : options;
-            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(CommMethod.GET, commOptions);
+            DefaultCommOptions = (options == null) ? DefaultCommOptions : options;
+            var callOptions = CommOptionsConverter.ConvertToGrpcOptions(DefaultCommOptions);
 
             var cts = new CancellationTokenSource();
             cts.CancelAfter(TimeSpan.FromMinutes(10)); //TODO:有待调整

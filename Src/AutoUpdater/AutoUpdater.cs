@@ -11,7 +11,7 @@ namespace AutoUpdater
     {
         //TODO：根据配置选择启用哪种模式。可扩展
         //使用策略设计模式：
-        private UpdateManager _updateManager = new InteractionUpdater(); 
+        private IUpdateFlow _updateManager = new InteractionUpdater(); 
 
         public void Start()
         {

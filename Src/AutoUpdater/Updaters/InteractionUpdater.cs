@@ -1,4 +1,5 @@
 ﻿using AutoUpdater.Core;
+using AutoUpdater.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,9 +21,27 @@ namespace AutoUpdater.Updaters
 
         }
 
-        public override void Start()
+        public override async Task<int> Start()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var versionInfo = await this.GetVersionInfo();
+                var checkResult = await this.CheckUpdate(versionInfo);
+                if (!checkResult.NeedUpdate)
+                {
+                    return (int)UpdateResult.NoUpdate;
+                }
+                var downloadResult =await this.Download(checkResult);
+                var closeAppResul = await this.CloseApp();
+                var applyResult = await this.ApplyUpdate(checkResult);
+
+                return (int)UpdateResult.UpdateSuccess;
+            }
+            catch (Exception ex)
+            {
+                //throw;
+                return (int)UpdateResult.UpdateError;
+            }
         }
     }
 }

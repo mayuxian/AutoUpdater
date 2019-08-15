@@ -9,10 +9,19 @@ namespace AutoUpdater.Core
         /// <summary>
         /// 请求大版本号
         /// </summary>
-        public static string MajorVerionNumUrl { get; }
+        public static string MajorVerionNumUrl
+        {
+            get { return ""; }
+        }
 
         public static string VersionInfoUrl { get; }
 
         public static string DownloadFileUrl { get; }
+
+        public static string BaseDirectory { get; }
+
+        public static string MainAppName { get; }
+
+        public static string UpdaterName { get; }
     }
 }

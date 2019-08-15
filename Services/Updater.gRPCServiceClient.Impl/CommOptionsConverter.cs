@@ -10,7 +10,7 @@ namespace Updater.gRPCService.Impl
     {
         //Header等的添加，参照：https://blog.csdn.net/xuduorui/article/details/78278808
         //http://doc.oschina.net/grpc?t=58011
-        public static CallOptions ConvertToGrpcOptions(CommMethod method, CommOptions commOptions)
+        public static CallOptions ConvertToGrpcOptions(CommOptions commOptions)
         {
             var metadata = new Metadata();
             metadata.Add("grpc-encoding", commOptions.ContentEncoding.WebName);
@@ -26,7 +26,7 @@ namespace Updater.gRPCService.Impl
 
             //metadata.Add("grpc-message-type", ??);   //消息类型 → “grpc-message-type” {消息模式的类型名}
 
-            metadata.Add("method", method.ToString());
+            metadata.Add("method", commOptions.Method.ToString());
             //metadata.Add("user-agent", commOptions.UserAgent);
 
             var deadline = DateTime.MinValue; //单位为100纳秒，所以需要*10

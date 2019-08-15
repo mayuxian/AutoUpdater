@@ -7,6 +7,8 @@ namespace Updater.CommService.Interface
 {
     public class CommOptions
     {
+        public CommMethod Method { get; set; } = CommMethod.POST;
+
         /// <summary>
         ///  Gets or sets the value of the Content-type HTTP header.
         ///  The default value is "application/json; charset=UTF-8".

@@ -17,13 +17,15 @@ namespace AutoUpdater.Core
         //TODO:可通过依赖注入
         //public UpdateManager(IUpdateService updateService)
         private IUpdateService _updateService = new UpdateService();
-        private ISignatureGenerator signatureGenerator = new Md5SignatureGenerator();
+        private ISignatureGenerator _signatureGenerator = new Md5SignatureGenerator();
+        private IUrlAssembler _urlAssembler = new UrlAssembler();
 
-        public abstract void Start();
+        public abstract Task<int> Start();
 
         public virtual async Task<IVersionInfo> GetVersionInfo()
         {
-            var versionInfo = await _updateService.GetVersionInfo(ConfigManager.VersionInfoUrl);
+            var url = _urlAssembler.GetVersionInfoUrl(ConfigManager.VersionInfoUrl, _updateService.GetCommOptions());
+            var versionInfo = await _updateService.GetVersionInfo(url);
             return versionInfo;
 
             //ConfigManager.RequestVersionInfoUrl
@@ -38,27 +40,37 @@ namespace AutoUpdater.Core
             foreach (var fileInfo in versionInfo.FileInfos)
             {
                 var fullPath = Path.GetFullPath(fileInfo.RelativePath);
-                var signature = signatureGenerator.GetSignature(fullPath);
+                var signature = _signatureGenerator.GetSignature(fullPath);
                 if (fileInfo.Signature != signature)
                 {
                     updateCheckResult.DownloadFiles.Add(fileInfo.RelativePath);
                 }
             }
-            //TODO：删除文件列表 
+            //TODO：生成删除文件列表 
 
             return Task.FromResult<IUpdateCheckResult>(updateCheckResult);
         }
 
-
-
-        public virtual Task<bool> Download(IUpdateCheckResult updateCheckResult)
+        public virtual async Task<bool> Download(IUpdateCheckResult updateCheckResult)
         {
-            throw new NotImplementedException();
+            if (updateCheckResult == null || updateCheckResult.DownloadFiles == null)
+            {
+                return true;
+            }
+            foreach (var filePath in updateCheckResult.DownloadFiles)
+            {
+                var url = _urlAssembler.GetVersionInfoUrl(ConfigManager.DownloadFileUrl, _updateService.GetCommOptions());
+                var fileFullPath = Path.GetFullPath(Path.Combine(ConfigManager.BaseDirectory, filePath));
+
+                //TODO:下载失败，则进行尝试
+                await _updateService.DownloadFile(url, fileFullPath);
+            }
+            return true;
         }
 
-        public virtual Task<bool> CloseApp(string processName)
+        public virtual Task<bool> CloseApp()
         {
-            throw new NotImplementedException();
+            return ProcessHelper.WaitAppExitAsync(ConfigManager.MainAppName);
         }
 
         public virtual Task<bool> ApplyUpdate(IUpdateCheckResult updateCheckResult)

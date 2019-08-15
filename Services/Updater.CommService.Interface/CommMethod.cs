@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Updater.gRPCService.Impl
+namespace Updater.CommService.Interface
 {
     public enum CommMethod
     {

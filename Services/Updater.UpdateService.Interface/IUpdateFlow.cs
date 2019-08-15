@@ -5,6 +5,8 @@ namespace Updater.UpdateService.Interface
     //TODO:做成抽象函数，让外部可以重载
     public interface IUpdateFlow //: IUpdateException
     {
+        Task<int> Start();
+
         //TODO:发指令或者直接关闭进程
 
         //先检查大版本
@@ -21,7 +23,7 @@ namespace Updater.UpdateService.Interface
 
         Task<bool> Download(IUpdateCheckResult updateCheckResult);
 
-        Task<bool> CloseApp(string processName);
+        Task<bool> CloseApp();
 
         Task<bool> ApplyUpdate(IUpdateCheckResult updateCheckResult);
     }

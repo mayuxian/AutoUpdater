@@ -21,6 +21,8 @@ namespace Updater.CommService.Interface
     /// </remarks>
     public interface ICommService
     {
+        CommOptions GetCommOptions();
+
         Task<string> GetStringAsync(string url, string requestContent = null, CommOptions options = null);
 
         Task<byte[]> GetBytesAsync(string url, string requestContent = null, CommOptions options = null);
