@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Updater.UpdateService.Interface;
 
-namespace AutoUpdater.Utils
+namespace AutoUpdater.Modules
 {
     internal class Md5SignatureGenerator : ISignatureGenerator
     {

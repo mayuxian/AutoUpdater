@@ -31,9 +31,13 @@ namespace AutoUpdater.Updaters
                 {
                     return (int)UpdateResult.NoUpdate;
                 }
-                var downloadResult =await this.Download(checkResult);
-                var closeAppResul = await this.CloseApp();
-                var applyResult = await this.ApplyUpdate(checkResult);
+                //TODO:若需要更新，则需要提醒用户是否进行更新，取消则不更新。
+                var downloadResult = await this.Download(checkResult);
+                var closeAppResult = await this.CloseApp();
+                if (closeAppResult)
+                {
+                    var applyResult = await this.ApplyUpdate(checkResult);
+                }
 
                 return (int)UpdateResult.UpdateSuccess;
             }

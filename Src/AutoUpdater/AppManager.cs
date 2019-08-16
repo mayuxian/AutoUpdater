@@ -1,10 +1,14 @@
-﻿using AutoUpdater.Updaters;
+﻿using AutoUpdater.Core;
+using AutoUpdater.Updaters;
+using AutoUpdater.Utils;
 using Ma.DIService;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using Updater.UpdateService.Interface;
+using AutoUpdater.Modules;
 
 namespace AutoUpdater
 {
@@ -12,17 +16,18 @@ namespace AutoUpdater
     {
         public AppManager()
         {
-            
+
         }
 
-        public Task<bool> CheckUpdate()
+        public async Task<bool> CheckUpdate()
         {
-            return null;
-        }
+            await ProcessHelper.CloseAppAsync(ConfigManager.UpdaterAppName);
+            await ProcessHelper.DeleteDirectory(ConfigManager.UpdaterRunTempDir);
 
-        private Task<bool> CopyTempUpdater()
-        {
-            return null;
+            var sourceDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigManager.UpdaterDir));
+            var targetDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigManager.UpdaterRunTempDir));
+            await FileUtil.CopyDirectoryFilesAsync(sourceDir, targetDir);
+            return true;
         }
     }
 }

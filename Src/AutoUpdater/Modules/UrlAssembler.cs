@@ -4,7 +4,7 @@ using System.Text;
 using Updater.CommService.Interface;
 using Updater.UpdateService.Interface;
 
-namespace AutoUpdater.Core
+namespace AutoUpdater.Modules
 {
     public class UrlAssembler : IUrlAssembler
     {

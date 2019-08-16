@@ -1,4 +1,5 @@
 ﻿using AutoUpdater.Models;
+using AutoUpdater.Modules;
 using AutoUpdater.Utils;
 using System;
 using System.Collections.Generic;
@@ -70,7 +71,7 @@ namespace AutoUpdater.Core
 
         public virtual Task<bool> CloseApp()
         {
-            return ProcessHelper.WaitAppExitAsync(ConfigManager.MainAppName);
+            return ProcessHelper.CloseAppAsync(ConfigManager.MainAppName);
         }
 
         public virtual Task<bool> ApplyUpdate(IUpdateCheckResult updateCheckResult)

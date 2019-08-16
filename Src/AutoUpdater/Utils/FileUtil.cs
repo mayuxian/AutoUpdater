@@ -8,7 +8,7 @@ namespace AutoUpdater.Utils
 {
     internal static class FileUtil
     {
-        public static async Task<bool> CopyDirectoryFilesAsync(string sourcePath, string destinationPath, bool overwriteexisting, int retryCopyCount = 5)
+        public static async Task<bool> CopyDirectoryFilesAsync(string sourcePath, string destinationPath, bool overwriteexisting = true)
         {
             sourcePath = sourcePath.EndsWith(@"\") ? sourcePath : sourcePath + @"\";
             destinationPath = destinationPath.EndsWith(@"\") ? destinationPath : destinationPath + @"\";
@@ -28,7 +28,7 @@ namespace AutoUpdater.Utils
                 foreach (string drs in Directory.GetDirectories(sourcePath))
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(drs);
-                    await CopyDirectoryFilesAsync(drs, destinationPath + dirInfo.Name, overwriteexisting, retryCopyCount);
+                    await CopyDirectoryFilesAsync(drs, destinationPath + dirInfo.Name, overwriteexisting);
                 }
             }
             return true;

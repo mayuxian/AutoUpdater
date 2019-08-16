@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using Updater.UpdateService.Interface;
 
-namespace AutoUpdater.Utils
+namespace AutoUpdater.Modules
 {
     //TODO:此生成器，将来可重写
-    public class DefaultGuidGenerator : IGuidGenerator
+    public class MachinetGuidGenerator : IMachineGuidGenerator
     {
         public string GetGuid()
         {

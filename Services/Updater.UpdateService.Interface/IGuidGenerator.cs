@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Updater.UpdateService.Interface
 {
-    public interface IGuidGenerator
+    public interface IMachineGuidGenerator
     {
         string GetGuid();
     }
