@@ -123,6 +123,10 @@
       <Project>{28303f27-674c-41cf-8b20-62fbb36c5a5a}</Project>
       <Name>Updater.gRPCServiceClient.Impl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Src\AutoUpdater\AutoUpdater.csproj">
+      <Project>{17e2562d-1e0c-46be-82d0-e839ed6107ce}</Project>
+      <Name>AutoUpdater</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

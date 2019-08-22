@@ -23,8 +23,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ma.DIService", "Framework\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater.gRPCServiceClient.Impl", "Services\Updater.gRPCServiceClient.Impl\Updater.gRPCServiceClient.Impl.csproj", "{28303F27-674C-41CF-8B20-62FBB36C5A5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdater", "Src\AutoUpdater\AutoUpdater.csproj", "{AE76AD3C-5EAC-47F2-8D62-4682EC9C20BF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater.Bootstrapper", "Src\Updater.Bootstrapper\Updater.Bootstrapper.csproj", "{896D7F8E-E6D4-474D-A9A6-B54108D3E16D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{4363AE25-E6D4-4FD5-B0B9-BEC7BDD92BB5}"
@@ -37,7 +35,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainAppTest", "Sample\MainA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceTest", "Sample\ServiceTest\ServiceTest.csproj", "{BD58EF9D-DE51-4E95-B260-95F5A034C839}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Updater.UpdateService.Interface", "Services\Updater.UpdateService.Interface\Updater.UpdateService.Interface.csproj", "{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater.UpdateService.Interface", "Services\Updater.UpdateService.Interface\Updater.UpdateService.Interface.csproj", "{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdater", "Src\AutoUpdater\AutoUpdater.csproj", "{17E2562D-1E0C-46BE-82D0-E839ED6107CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,10 +73,6 @@ Global
 		{28303F27-674C-41CF-8B20-62FBB36C5A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28303F27-674C-41CF-8B20-62FBB36C5A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28303F27-674C-41CF-8B20-62FBB36C5A5A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AE76AD3C-5EAC-47F2-8D62-4682EC9C20BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AE76AD3C-5EAC-47F2-8D62-4682EC9C20BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AE76AD3C-5EAC-47F2-8D62-4682EC9C20BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AE76AD3C-5EAC-47F2-8D62-4682EC9C20BF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{896D7F8E-E6D4-474D-A9A6-B54108D3E16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{896D7F8E-E6D4-474D-A9A6-B54108D3E16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{896D7F8E-E6D4-474D-A9A6-B54108D3E16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -101,6 +97,10 @@ Global
 		{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
