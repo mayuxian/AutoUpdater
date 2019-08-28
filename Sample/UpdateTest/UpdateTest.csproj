@@ -22,11 +22,11 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Bin\netcoreapp2.0\</OutputPath>
+    <OutputPath>..\..\Bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Bin\netcoreapp2.0\UpdateTest.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\UpdateTest.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -126,6 +126,7 @@
     <ProjectReference Include="..\..\Src\AutoUpdater\AutoUpdater.csproj">
       <Project>{17e2562d-1e0c-46be-82d0-e839ed6107ce}</Project>
       <Name>AutoUpdater</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

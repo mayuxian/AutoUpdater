@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Updater.gRPCService.Impl;
 using Path = System.IO.Path;
+using AutoUpdater.Modules;
 
 namespace UpdateTest
 {
@@ -75,6 +76,19 @@ namespace UpdateTest
             {
                 tbDownloadInfo.Text = "下载失败";
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnGetConfig_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                txtConfigValue.Text = ConfigManager.GetConfig(txtConfigKey.Text.Trim());
+            }
+            catch (Exception ex)
+            {
+                txtConfigValue.Text = ex.Message;
+                //throw;
             }
         }
     }

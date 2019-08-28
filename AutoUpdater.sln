@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Updater.UpdateService.Inter
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoUpdater", "Src\AutoUpdater\AutoUpdater.csproj", "{17E2562D-1E0C-46BE-82D0-E839ED6107CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ma.ConfigManager", "Framework\Ma.ConfigManager\Ma.ConfigManager.csproj", "{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,10 @@ Global
 		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17E2562D-1E0C-46BE-82D0-E839ED6107CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +124,7 @@ Global
 		{DF3C589B-F8CA-47BB-BB1B-41538D3EFCC6} = {4363AE25-E6D4-4FD5-B0B9-BEC7BDD92BB5}
 		{BD58EF9D-DE51-4E95-B260-95F5A034C839} = {4363AE25-E6D4-4FD5-B0B9-BEC7BDD92BB5}
 		{F0ADAAD9-8A61-483F-9CBD-64F8FA4C8753} = {3D7CAF22-AC15-43F0-AD24-D98941973367}
+		{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B} = {691ADB19-9988-4971-BB6E-DC9CFFC6D2B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {50AF7F68-BAB3-4159-8D52-8538AA61A0FF}

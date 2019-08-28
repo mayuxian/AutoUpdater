@@ -22,7 +22,7 @@ namespace Updater.Bootstrapper
             var services = DependencyService.Instance;
             services.AddSingleton<ILogProvider, LogProvider>();
             services.AddSingleton<ICommService,GrpcService>();
-
+            
             //DependencyService.Instance.AddSingleton(typeof(ILogProvider), new LogProvider());
 
             var provider = services.BuildServiceProvider();

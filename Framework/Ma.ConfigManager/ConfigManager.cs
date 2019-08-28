@@ -1,15 +1,13 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.Configuration.Xml;
-using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace AutoUpdater.Modules
+namespace Ma.ConfigManager
 {
-    //TODO:使用独立出来的ConfigManager来获取配置文件信息
+    //TODO:参考：https://www.jianshu.com/p/b9416867e6e6
+    //IConfiguration
     public static class ConfigManager
     {
         private static IConfigurationBuilder _configBuilder = new ConfigurationBuilder();
@@ -73,10 +71,6 @@ namespace AutoUpdater.Modules
         }
     }
 
-    public class OptionSample : IOptions<OptionSample>
-    {
-        public OptionSample Value => this;
-    }
 
     public class UpdaterConfiguration : IConfiguration
     {
