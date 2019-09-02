@@ -25,7 +25,7 @@ namespace AutoUpdater.Core
 
         public virtual async Task<IVersionInfo> GetVersionInfo()
         {
-            var url = _urlAssembler.GetVersionInfoUrl(ConfigManager.VersionInfoUrl, _updateService.GetCommOptions());
+            var url = _urlAssembler.GetVersionInfoUrl(UpdaterConfigManager.VersionInfoUrl, _updateService.GetCommOptions());
             var versionInfo = await _updateService.GetVersionInfo(url);
             return versionInfo;
 
@@ -60,8 +60,8 @@ namespace AutoUpdater.Core
             }
             foreach (var filePath in updateCheckResult.DownloadFiles)
             {
-                var url = _urlAssembler.GetVersionInfoUrl(ConfigManager.DownloadFileUrl, _updateService.GetCommOptions());
-                var fileFullPath = Path.GetFullPath(Path.Combine(ConfigManager.BaseDirectory, filePath));
+                var url = _urlAssembler.GetVersionInfoUrl(UpdaterConfigManager.DownloadFileUrl, _updateService.GetCommOptions());
+                var fileFullPath = Path.GetFullPath(Path.Combine(UpdaterConfigManager.BaseDirectory, filePath));
 
                 //TODO:下载失败，则进行尝试
                 await _updateService.DownloadFile(url, fileFullPath);
@@ -71,7 +71,7 @@ namespace AutoUpdater.Core
 
         public virtual Task<bool> CloseApp()
         {
-            return ProcessHelper.CloseAppAsync(ConfigManager.MainAppName);
+            return ProcessHelper.CloseAppAsync(UpdaterConfigManager.MainAppName);
         }
 
         public virtual Task<bool> ApplyUpdate(IUpdateCheckResult updateCheckResult)

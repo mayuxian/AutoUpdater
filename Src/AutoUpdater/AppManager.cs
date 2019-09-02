@@ -21,11 +21,11 @@ namespace AutoUpdater
 
         public async Task<bool> CheckUpdate()
         {
-            await ProcessHelper.CloseAppAsync(ConfigManager.UpdaterAppName);
-            await ProcessHelper.DeleteDirectory(ConfigManager.UpdaterRunTempDir);
+            await ProcessHelper.CloseAppAsync(UpdaterConfigManager.UpdaterAppName);
+            await ProcessHelper.DeleteDirectory(UpdaterConfigManager.UpdaterRunTempDir);
 
-            var sourceDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigManager.UpdaterDir));
-            var targetDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ConfigManager.UpdaterRunTempDir));
+            var sourceDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdaterConfigManager.UpdaterDir));
+            var targetDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, UpdaterConfigManager.UpdaterRunTempDir));
             await FileUtil.CopyDirectoryFilesAsync(sourceDir, targetDir);
             return true;
         }

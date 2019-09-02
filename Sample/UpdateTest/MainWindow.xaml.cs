@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using Updater.gRPCService.Impl;
 using Path = System.IO.Path;
 using AutoUpdater.Modules;
+using Ma.ConfigManager;
 
 namespace UpdateTest
 {
@@ -83,6 +84,7 @@ namespace UpdateTest
         {
             try
             {
+                ConfigManager.Load();
                 txtConfigValue.Text = ConfigManager.GetConfig(txtConfigKey.Text.Trim());
             }
             catch (Exception ex)

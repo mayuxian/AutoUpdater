@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "MajorVerionNumUrl": "",
+    "VersionInfoUrl": "http://localhost:8080/GetVersionInfoUrl",
+    "DownloadFileUrl": "http://localhost:8080/DownloadFileUrl"
+  }
+}

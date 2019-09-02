@@ -1,0 +1,29 @@
+{
+  "appSettings": {
+    "MainAppName": "MainAppTest.exe",
+    "UpdaterAppName": null,
+    "UpdaterRunTempDir": null,
+    "UpdaterDir": null
+  },
+  "updateService": {
+    "ConnectionStrings": {
+      "MajorVerionNumUrl": "",
+      "VersionInfoUrl": "http://localhost:8080/GetVersionInfoUrl",
+      "DownloadFileUrl": "http://localhost:8080/DownloadFileUrl"
+    }
+  },
+  "commSettings": {
+    "UseGzip": "",
+    "CommMethod": "POST",
+    "ReconnectCount": 2,
+    "ReconnectInterval": 500
+  },
+  "loggingSettings": {
+    "loggerExceptionLogPath": "",
+    "logPath": "log/",
+    "appender": {
+      "name": "",
+      "file": ""
+    }
+  }
+}

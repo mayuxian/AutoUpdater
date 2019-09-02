@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Ma.ConfigManager\Ma.ConfigManager.csproj" />
     <ProjectReference Include="..\..\Framework\Ma.DIService\Ma.DIService.csproj">
       <Private>true</Private>
     </ProjectReference>

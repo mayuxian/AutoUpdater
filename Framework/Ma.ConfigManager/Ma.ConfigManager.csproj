@@ -4,6 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>D:\GitHub-Self\AutoUpdater\Bin\</OutputPath>
+    <DocumentationFile>D:\GitHub-Self\AutoUpdater\Framework\Ma.ConfigManager\Ma.ConfigManager.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>D:\GitHub-Self\AutoUpdater\Bin\</OutputPath>
+    <DocumentationFile>D:\GitHub-Self\AutoUpdater\Framework\Ma.ConfigManager\Ma.ConfigManager.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />

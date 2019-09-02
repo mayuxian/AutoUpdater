@@ -1,0 +1,6 @@
+{
+  "UseGzip": "true",
+  "CommMethod": "POST",
+  "ReconnectCount": 2,
+  "ReconnectInterval": 500
+}

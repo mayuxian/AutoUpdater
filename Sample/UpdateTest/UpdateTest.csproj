@@ -115,6 +115,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Ma.ConfigManager\Ma.ConfigManager.csproj">
+      <Project>{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}</Project>
+      <Name>Ma.ConfigManager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\Updater.CommService.Interface\Updater.CommService.Interface.csproj">
       <Project>{d8f7fa13-7493-4078-811e-4f2a3a62760f}</Project>
       <Name>Updater.CommService.Interface</Name>
