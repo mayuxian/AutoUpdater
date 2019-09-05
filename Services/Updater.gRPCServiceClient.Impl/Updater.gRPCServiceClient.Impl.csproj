@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Ma.Bootstrapper\Ma.Bootstrapper.csproj" />
     <ProjectReference Include="..\Updater.CommService.Interface\Updater.CommService.Interface.csproj">
       <Private>false</Private>
     </ProjectReference>

@@ -11,7 +11,7 @@ using Updater.UpdateService.Interface;
 
 namespace Updater.Bootstrapper
 {
-    public class Bootstarpper : IBootstrapper
+    public class Bootstrapper : IBootstrapper
     {
         //TODO:引入Autofac  依赖注入
         public Task<bool> Startup()

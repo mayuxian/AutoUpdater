@@ -6,7 +6,7 @@ using System.IO;
 
 namespace Ma.Logging.Log4net
 {
-    public class Log4netManager
+    internal class Log4netManager
     {
         private string _configFilePath;
         private string _repositoryDomain;
@@ -17,7 +17,6 @@ namespace Ma.Logging.Log4net
             _repositoryDomain = repositoryDomain;
 
             this.Initialize();
-
         }
 
         public void Initialize()

@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Ma.Bootstrapper\Ma.Bootstrapper.csproj" />
     <ProjectReference Include="..\Ma.DIService\Ma.DIService.csproj" />
     <ProjectReference Include="..\Ma.Logging\Ma.Logging.csproj" />
   </ItemGroup>
