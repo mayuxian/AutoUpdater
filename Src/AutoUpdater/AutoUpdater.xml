@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AutoUpdater</name>
+    </assembly>
+    <members>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.OptionId">
+            <summary>
+            配置ID
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.MatchPatterns">
+            <summary>
+            文件匹配模式
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.ExcludedFiles">
+            <summary>
+            排除的文件
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.ExcludedDirectories">
+            <summary>
+            排除的目录
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.OnceUpdateFiles">
+            <summary>
+            只更新一次的文件
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.UpdateStrategy.OnceUpdateDirectories">
+            <summary>
+            只更新一次的文件目录
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Models.VersionInfo.UpdateStrategy">
+            <summary>
+            更新策略
+            </summary>
+        </member>
+        <member name="T:AutoUpdater.Modules.UpdaterConfigManager">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.MajorVerionNumUrl">
+            <summary>
+            请求大版本号Url
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.VersionInfoUrl">
+            <summary>
+            版本信息Url
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.DownloadFileUrl">
+            <summary>
+            下载文件Url
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.BaseDirectory">
+            <summary>
+            根目录
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.MainAppName">
+            <summary>
+            主程序名称
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.UpdaterDir">
+            <summary>
+            更新器路径
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.UpdaterAppName">
+            <summary>
+            更新应用名称
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.UpdaterRunTempDir">
+            <summary>
+            更新器运行临时目录
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.UseGzip">
+            <summary>
+            使用Gzip
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.CommMethod">
+            <summary>
+            通信方法 GET/POST
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.ReconnectCount">
+            <summary>
+            重试连接次数
+            </summary>
+        </member>
+        <member name="P:AutoUpdater.Modules.UpdaterConfigManager.ReconnectInterval">
+            <summary>
+            重试连接间隔 单位：毫秒
+            </summary>
+        </member>
+        <member name="T:AutoUpdater.Updaters.InteractionUpdater">
+            <summary>
+            交互更新器
+            </summary>
+            <remarks>
+            默认更新器
+            </remarks>
+        </member>
+    </members>
+</doc>

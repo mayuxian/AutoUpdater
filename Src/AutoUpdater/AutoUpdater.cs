@@ -7,6 +7,9 @@ using Updater.UpdateService.Interface;
 
 namespace AutoUpdater
 {
+    /// <summary>
+    /// 自动更新
+    /// </summary>
     public class AutoUpdater  
     {
         //TODO：根据配置选择启用哪种模式。可扩展
