@@ -1,8 +1,0 @@
-﻿{
-  "loggerExceptionLogPath": "",
-  "logPath": "log/",
-  "appender": {
-    "name": "",
-    "file": ""
-  }
-}

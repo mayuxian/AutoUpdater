@@ -10,7 +10,7 @@ namespace Updater.gRPCService.Server
     {
         private static Grpc.Core.Server _server;
 
-        public static void Start(string host = "localhost", int port = 53100)
+        public static void Start(string host = "localhost", int port = 8080)
         {
             _server = new Grpc.Core.Server
             {

@@ -4,6 +4,11 @@
         <name>AutoUpdater</name>
     </assembly>
     <members>
+        <member name="T:AutoUpdater.AutoUpdater">
+            <summary>
+            自动更新
+            </summary>
+        </member>
         <member name="P:AutoUpdater.Models.UpdateStrategy.OptionId">
             <summary>
             配置ID

@@ -74,6 +74,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="CheckUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -81,6 +85,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CheckUpdateWindow.xaml.cs">
+      <DependentUpon>CheckUpdateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -115,6 +122,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Framework\Ma.Bootstrapper\Ma.Bootstrapper.csproj">
+      <Project>{1ae15bc2-cb79-409a-9df5-330f1c71003d}</Project>
+      <Name>Ma.Bootstrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Framework\Ma.ConfigManager\Ma.ConfigManager.csproj">
       <Project>{D7CA8E83-55A7-4CC0-9486-1B2D7C61848B}</Project>
       <Name>Ma.ConfigManager</Name>

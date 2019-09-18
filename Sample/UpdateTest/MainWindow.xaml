@@ -7,20 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="490.463" Width="659.667">
     <Grid>
-        <Button Name="btnRequest" Content="请求" HorizontalAlignment="Left" Margin="498,35,0,0" VerticalAlignment="Top" Width="75" Click="BtnRequest_Click"/>
-        <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="144" Margin="93,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
-        <TextBox x:Name="txtUrl" HorizontalAlignment="Left" Height="23" Margin="92,36,0,0" TextWrapping="Wrap" Text="127.0.0.1:53100" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
-        <Label Content="Url:" HorizontalAlignment="Left" Margin="57,36,0,0" VerticalAlignment="Top"/>
-        <Label Content="Response:" HorizontalAlignment="Left" Margin="19,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.048,-0.039"/>
-        <Button x:Name="btnDownload" Content="下载" HorizontalAlignment="Left" Margin="498,256,0,0" VerticalAlignment="Top" Width="75" Click="BtnDownload_Click" />
-        <TextBox x:Name="txtDownloadFilePath" HorizontalAlignment="Left" Height="23" Margin="92,252,0,0" TextWrapping="Wrap" Text="大话设计模式.pdf" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
-        <Label Content="下载文件:" HorizontalAlignment="Left" Margin="26,251,0,0" VerticalAlignment="Top"/>
-        <Label Content="结果:" HorizontalAlignment="Left" Margin="92,280,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tbDownloadInfo" HorizontalAlignment="Left" Margin="134,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,343,0,0" TextWrapping="Wrap" Text="配置文件key：" VerticalAlignment="Top" RenderTransformOrigin="0,0.133"/>
-        <TextBox x:Name="txtConfigKey" Text="logPath" HorizontalAlignment="Left" Height="23" Margin="95,338,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="377"/>
-        <TextBlock HorizontalAlignment="Left" Margin="6,380,0,0" TextWrapping="Wrap" Text="配置文件结果：" VerticalAlignment="Top" RenderTransformOrigin="0,0.133"/>
-        <TextBox x:Name="txtConfigValue" HorizontalAlignment="Left" Height="23" Margin="93,380,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
-        <Button x:Name="btnGetConfig" Content="获取" HorizontalAlignment="Left" Margin="498,366,0,0" VerticalAlignment="Top" Width="75" Click="BtnGetConfig_Click" />
+        <TabControl>
+            <TabItem Header="更新流程测试" IsSelected="True">
+                <Grid>
+                    <Button x:Name="btnCheckUpdate" Content="检查更新" HorizontalAlignment="Left" Margin="48,51,0,0" VerticalAlignment="Top" Width="105" Height="33" Click="BtnCheckUpdate_Click"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="通信测试">
+                <Grid>
+                    <Button Name="btnRequest" Content="请求" HorizontalAlignment="Left" Margin="498,35,0,0" VerticalAlignment="Top" Width="75" Click="BtnRequest_Click"/>
+                    <TextBox x:Name="txtContent" HorizontalAlignment="Left" Height="144" Margin="93,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
+                    <TextBox x:Name="txtUrl" HorizontalAlignment="Left" Height="23" Margin="92,36,0,0" TextWrapping="Wrap" Text="127.0.0.1:53100" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
+                    <Label Content="Url:" HorizontalAlignment="Left" Margin="57,36,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Response:" HorizontalAlignment="Left" Margin="19,78,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.048,-0.039"/>
+                    <Button x:Name="btnDownload" Content="下载" HorizontalAlignment="Left" Margin="498,256,0,0" VerticalAlignment="Top" Width="75" Click="BtnDownload_Click" />
+                    <TextBox x:Name="txtDownloadFilePath" HorizontalAlignment="Left" Height="23" Margin="92,252,0,0" TextWrapping="Wrap" Text="大话设计模式.pdf" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="380"/>
+                    <Label Content="下载文件:" HorizontalAlignment="Left" Margin="26,251,0,0" VerticalAlignment="Top"/>
+                    <Label Content="结果:" HorizontalAlignment="Left" Margin="92,280,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="tbDownloadInfo" HorizontalAlignment="Left" Margin="134,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,343,0,0" TextWrapping="Wrap" Text="配置文件key：" VerticalAlignment="Top" RenderTransformOrigin="0,0.133"/>
+                    <TextBox x:Name="txtConfigKey" Text="logPath" HorizontalAlignment="Left" Height="23" Margin="95,338,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap"  VerticalAlignment="Top" Width="377"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="6,380,0,0" TextWrapping="Wrap" Text="配置文件结果：" VerticalAlignment="Top" RenderTransformOrigin="0,0.133"/>
+                    <TextBox x:Name="txtConfigValue" HorizontalAlignment="Left" Height="23" Margin="93,380,0,0" VerticalContentAlignment="Center" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="379"/>
+                    <Button x:Name="btnGetConfig" Content="获取" HorizontalAlignment="Left" Margin="498,366,0,0" VerticalAlignment="Top" Width="75" Click="BtnGetConfig_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

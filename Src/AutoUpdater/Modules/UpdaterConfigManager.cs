@@ -34,7 +34,14 @@ namespace AutoUpdater.Modules
         /// </summary>
         public static string VersionInfoUrl
         {
-            get { return ConfigManager.GetConnectionString(nameof(VersionInfoUrl)); }
+            get
+            {
+                //TODO；要根据是否使用grpc通信或者其他通信，而决定url地址。
+                var url = ConfigManager.GetConnectionString(nameof(VersionInfoUrl));
+                url = url.ToLower().StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                    ? url.ToLower().Replace("http://","") : url;
+                return url;
+            }
         }
 
         /// <summary>

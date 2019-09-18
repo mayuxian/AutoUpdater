@@ -17,6 +17,8 @@ using Updater.gRPCService.Impl;
 using Path = System.IO.Path;
 using AutoUpdater.Modules;
 using Ma.ConfigManager;
+using Ma.Bootstrapper;
+using AutoUpdater;
 
 namespace UpdateTest
 {
@@ -28,6 +30,8 @@ namespace UpdateTest
         public MainWindow()
         {
             InitializeComponent();
+
+            //Bootstrapper.Load();
         }
 
         private async Task<string> GetResponse(string url)
@@ -92,6 +96,13 @@ namespace UpdateTest
                 txtConfigValue.Text = ex.Message;
                 //throw;
             }
+        }
+
+        private void BtnCheckUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            ConfigManager.Load();
+            AutoUpdater.AutoUpdater autoUpdater = new AutoUpdater.AutoUpdater();
+            autoUpdater.Start();
         }
     }
 }
